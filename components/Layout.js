@@ -2,7 +2,7 @@ import Head from "next/head";
 
 export default function Layout({ children, title = "Default title" }) {
   return (
-    <div className="flex justify-center items-center flex-col min-h-screen text-gray-800 text-white font-mono ">
+    <div className="flex justify-center items-center flex-col min-h-screen bg-gray-800 text-white font-mono ">
       <Head>
         <title>{title}</title>
       </Head>
