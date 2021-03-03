@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { userRouter } from "next/router";
+import { useRouter } from "next/router";
 import Cookie from "universal-cookie";
 
 const cookie = new Cookie();
 
 export default function Auth() {
-  const router = userRouter();
-  const [username, setUsername] = userState("");
-  const [password, setPassword] = userState("");
-  const [isLogin, setIsLogin] = userState(true);
+  const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLogin, setIsLogin] = useState(true);
 
   const login = async () => {
     try {
