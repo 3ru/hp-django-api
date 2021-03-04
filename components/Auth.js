@@ -39,7 +39,7 @@ export default function Auth() {
     }
   };
 
-  const authUser = async (c) => {
+  const authUser = async (e) => {
     e.preventDefault();
     if (isLogin) {
       login();
@@ -114,7 +114,7 @@ export default function Auth() {
               onClick={() => setIsLogin(!isLogin)}
               className="font-medium text-white hover:text-indigo-500 cursor-pointer"
             >
-              Register?
+              Change Mode
             </span>
           </div>
         </div>
