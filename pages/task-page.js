@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getAllTasksData } from "../lib/tasks";
 import Task from "../components/Task";
 import useSWR from "swr";
+import StateContextProvider from "../context/StateContext";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const apiUrl = `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/list-task/`;
@@ -22,31 +23,35 @@ export default function TaskPage({ staticfilteredTasks }) {
   }, []);
 
   return (
-    <Layout title="Task Page">
-      <ul>
-        {filteredTasks &&
-          filteredTasks.map((task) => <Task key={task.id} task={task} />)}
-      </ul>
-      <Link href="/main-page">
-        <div className="flex cursor-pointer mt-12">
-          <svg
-            className="mr-3 w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-            />
-          </svg>
-          <span>Back to main page</span>
-        </div>
-      </Link>
-    </Layout>
+    <StateContextProvider>
+      <Layout title="Task Page">
+        <ul>
+          {filteredTasks &&
+            filteredTasks.map((task) => (
+              <Task key={task.id} task={task} taskDeleted={mutate} />
+            ))}
+        </ul>
+        <Link href="/main-page">
+          <div className="flex cursor-pointer mt-12">
+            <svg
+              className="mr-3 w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
+              />
+            </svg>
+            <span>Back to main page</span>
+          </div>
+        </Link>
+      </Layout>
+    </StateContextProvider>
   );
 }
 
