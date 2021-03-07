@@ -6,7 +6,6 @@ const cookie = new Cookie();
 
 export default function TaskForm({ taskCreated }) {
   const { selectedTask, setSelectedTask } = useContext(StateContext);
-
   const create = async (e) => {
     e.preventDefault();
     await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}api/tasks/`, {
@@ -24,7 +23,6 @@ export default function TaskForm({ taskCreated }) {
     setSelectedTask({ id: 0, title: "" });
     taskCreated();
   };
-
   const update = async (e) => {
     e.preventDefault();
     await fetch(
@@ -52,9 +50,9 @@ export default function TaskForm({ taskCreated }) {
           className="text-black mb-8 px-2 py-1"
           type="text"
           value={selectedTask.title}
-          onChange={(e) => {
-            setSelectedTask({ ...selectedTask, title: e.target.value });
-          }}
+          onChange={(e) =>
+            setSelectedTask({ ...selectedTask, title: e.target.value })
+          }
         />
         <button
           type="submit"
