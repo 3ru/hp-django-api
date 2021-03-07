@@ -1,4 +1,6 @@
-# Next JS Modern Web w/Django API
+![title](title.png)
+
+# Next JS Website with JWT authorization
 
 - [Next.js](https://nextjs.org/)
 - [Django](https://djangoproject.jp/)
