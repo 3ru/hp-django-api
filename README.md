@@ -1,4 +1,4 @@
-![title](title.png)
+![title](pics/title.png)
 
 # Next JS Website with JWT authorization
 
